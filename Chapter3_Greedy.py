@@ -80,6 +80,7 @@ print(max)
 """
 
 # 교재 - min() 함수 사용, 현재 줄에서 가장 작은 값 구하고 바로 기존의 최댓값과 비교후 최댓값만 유지
+"""
 n, m = map(int, input().split())
 result = 0
 
@@ -87,5 +88,35 @@ for i in range(n):
     data = list(map(int, input().split()))
     min_value = min(data)
     result = max(result, min_value)
+print(result)
+"""
+
+# 4. 1이 될 때까지
+# 내 알고리즘 
+"""
+n, k = map(int, input().split())
+count = 0
+while n!= 1:
+    if n % k == 0:
+        n = n//k
+        count += 1
+    else:
+        n -= 1
+        count += 1
+print(count)
+"""
+
+# 백준 그리디
+# 11047 : 동전 0
+n, k = map(int, input().split())
+coins = []
+result = 0
+for i in range(n):
+    coins.append(int(input()))
+coins.sort(reverse=True)
+
+for coin in coins:
+    result += k // coin
+    k %= coin
 print(result)
 
