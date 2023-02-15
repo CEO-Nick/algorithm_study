@@ -106,8 +106,9 @@ while n!= 1:
 print(count)
 """
 
-# 백준 그리디
-# 11047 : 동전 0
+## 백준 그리디
+    # 11047 : 동전 0
+"""
 n, k = map(int, input().split())
 coins = []
 result = 0
@@ -119,4 +120,67 @@ for coin in coins:
     result += k // coin
     k %= coin
 print(result)
+"""
 
+    # 1026 : 보물
+"""
+n = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+result = 0
+while len(A) != 0:
+    min_value = min(A)
+    max_value = max(B)
+    result += min_value * max_value
+    A.remove(min_value)
+    B.remove(max_value)
+print(result)
+"""
+
+    # 11399 : ATM
+"""
+n = int(input())
+waiting = list(map(int, input().split()))
+waiting.sort()
+result = 0
+for data in waiting:
+    result += (data * n)
+    n -= 1
+print(result)
+"""
+
+    # 1439 : 뒤집기
+"""
+s = input()
+count0 = 0
+count1 = 0
+isFirst = True
+for i in range(len(s)-1):
+    if s[i] != s[i+1]:
+        if isFirst == True:
+            count0 += 1
+            count1 += 1
+            isFirst = False
+        else:
+            if s[i+1] == '0':
+                count0 += 1
+            else:
+                count1 += 1
+
+print(min(count0,count1))
+"""
+
+    # 2847 : 게임을 만든 동준이
+n = int(input())
+score = []
+for i in range(n):
+    score.append(int(input()))
+len = len(score)
+last = score[len-1]
+result = 0
+for i in range(n-1):
+    tmp = last - (n-i-1)
+    if tmp < score[i]:
+        result += (score[i] - tmp)
+print(result)
