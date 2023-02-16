@@ -169,7 +169,7 @@ for i in range(len(s)-1):
                 count1 += 1
 
 print(min(count0,count1))
-"""
+
 
     # 2847 : 게임을 만든 동준이
 n = int(input())
@@ -184,3 +184,7 @@ for i in range(n-1):
     if tmp < score[i]:
         result += (score[i] - tmp)
 print(result)
+"""
+
+order = 'a 123'
+print(order.split()[1])
