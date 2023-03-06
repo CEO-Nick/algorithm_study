@@ -208,6 +208,7 @@ if flag == 0:
 """
 
     # 1158 요세푸스 문제
+"""
 n, k = map(int, input().split())
 array = [i+1 for i in range(n)]
 
@@ -222,8 +223,37 @@ while array:
 
     array.sort()
 print('<', ', '.join(result), '>',sep='')
+"""
+
+    # 10799 쇠막대기
+str1 = list(input())
+result = 0
+stack = []
+                
+for i in range(len(str1)):
+    if str1[i] == '(':
+        stack.append(str1[i])
+    else:
+        if str1[i-1] == '(':
+            stack.pop()
+            result += len(stack)
+        else:
+            stack.pop()
+            result += 1
+
+print(result)
+
+                
+                
+            
+
+
+
 
     
+
+
+
     
     
 
