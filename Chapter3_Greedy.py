@@ -186,5 +186,50 @@ for i in range(n-1):
 print(result)
 """
 
+"""
 order = 'a 123'
 print(order.split()[1])
+"""
+
+# 2023-09-11
+# 03.숫자 카드 게임
+"""
+n, m = map(int, input().split())
+arr = [] 
+for _ in range(n):
+    arr.append(list(map(int, input().split())))
+
+arr.sort()
+
+min_index = n
+min_value = 10001
+for i in range(n):
+    if arr[i][0] < min_value:
+        min_value = arr[i][0]
+        min_index = i
+
+print(min_value)
+"""
+"""
+n, m = map(int, input().split())
+
+res = 0
+for i in range(n):
+    data = list(map(int, input().split()))
+    min_value = min(data)
+
+    res = max(res, min_value)
+print(min_value)
+"""
+
+# 04. 1이 될 때까지
+n, k = map(int, input().split())
+
+cnt = 0
+while n !=1:
+    if n % k == 0:
+        n = n // k
+    else:
+        n -= 1
+    cnt += 1
+print(cnt)
