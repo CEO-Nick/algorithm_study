@@ -132,10 +132,55 @@ while True:
 print(count)
 """
 
+"""
 ## 백준 구현
     # 16234 : 인구이동
 n, l, r = map(int, input().split())
 country = []
 for i in range(n):
     country.append(list(map(int,input().split())))
+"""
 
+## 2023.09.25
+# 4-1. 상하좌우
+"""
+n = int(input())    
+plan = list(input().split())
+
+dx, dy = [0, 0, -1, 1], [1, -1, 0, 0]   # R L U D 순서
+
+def in_range(x, y):
+    return 0 <= x and x < n and 0 <= y and y < n
+
+def direction(direct):
+    if direct == "R":
+        return 0
+    elif direct == "L":
+        return 1
+    elif direct == "U":
+        return 2
+    else:
+        return 3
+    
+x, y = 0, 0
+for i in range(len(plan)):
+    direct = direction(plan[i])
+    next_x, next_y = x + dx[direct], y + dy[direct]
+    if in_range(next_x, next_y):
+        x, y = next_x, next_y
+    print(x, y)
+    
+
+print(x+1, y+1)
+"""
+
+# 4-2. 시각
+n = int(input())
+
+cnt = 0
+for i in range(n+1):
+    for j in range(60):
+        for k in range(60):
+            if '3' in str(i) + str(j) + str(k):
+                cnt += 1
+print(cnt)
