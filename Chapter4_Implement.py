@@ -174,6 +174,8 @@ for i in range(len(plan)):
 print(x+1, y+1)
 """
 
+"""
+## 2023.09.25
 # 4-2. 시각
 n = int(input())
 
@@ -183,4 +185,23 @@ for i in range(n+1):
         for k in range(60):
             if '3' in str(i) + str(j) + str(k):
                 cnt += 1
+print(cnt)
+"""
+
+# 2023.09.26
+# 2. 왕실의 나이트
+pos = input()
+r, c = int(pos[1]), ord(pos[0])  # 'a' -> 아스키코드 97로 변환
+
+dx, dy = [2, 2, -1, 1, -2 , -2, -1, 1], [-1, 1, 2, 2, 1, -1, -2, -2]
+
+def in_range(x, y):
+    return 1 <= x and x <= 8 and 97 <= y and y <= 104
+
+cnt = 0
+for i in range(8):
+    next_x, next_y = r + dx[i], c + dy[i]
+    if in_range(next_x, next_y):
+        cnt += 1
+
 print(cnt)
