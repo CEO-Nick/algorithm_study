@@ -134,6 +134,7 @@ for i in range(n):
 print(result)
 """
 
+"""
 # 4. 미로 탈출
 from collections import deque
 
@@ -170,3 +171,44 @@ def bfs(x,y):
     return maze[n-1][m-1]
 
 print(bfs(0,0))
+"""
+
+n, m = map(int, input().split())
+
+grid = []
+for _ in range(n):
+    grid.append(list(map(int, input().split())))
+
+visited = [[False for _ in range(m)] for _ in range(n)]
+
+def in_range(x, y):
+    return 0 <= x and x < n and 0 <= y and y < m
+
+def can_go(x, y):
+    if not in_range(x, y):
+        return False
+    if visited[x][y] or grid[x][y] == 1:
+        return False
+    
+    return True
+
+def dfs(x, y):
+    dxs, dys = [1, 0, -1, 0], [0, 1, 0, -1]
+    for dx, dy in zip(dxs, dys):
+        nx, ny = x + dx, y +dy
+        if can_go(nx, ny):
+            visited[x][y] = True
+            dfs(nx, ny)
+            return True
+    return False
+
+res = 0
+for i in range(n):
+    for j in range(m):
+        if grid[i][j] == 1:
+            continue
+        visited[i][j] = True
+        if dfs(i, j):
+            res += 1
+
+print(res)
