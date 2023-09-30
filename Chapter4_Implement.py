@@ -1,4 +1,4 @@
-# Chapter4_Implement
+ # Chapter4_Implement
 # 4- 1 : 상하좌우
 # 내 알고리즘
 """
@@ -188,6 +188,7 @@ for i in range(n+1):
 print(cnt)
 """
 
+"""
 # 2023.09.26
 # 2. 왕실의 나이트
 pos = input()
@@ -205,3 +206,51 @@ for i in range(8):
         cnt += 1
 
 print(cnt)
+"""
+
+# 2023.09.27
+# 3. 게임 개발 - 틀림
+n, m = map(int, input().split())
+x, y, d = map(int, input().split())
+
+grid = []
+for _ in range(n):
+    grid.append(list(map(int, input().split())))
+
+visited = [[False for _ in range(m)] for _ in range(n)]
+
+dx, dy = [-1, 0, 1, 0], [0, 1, 0, -1]   # 싱 -> 우 -> 하 -> 좌
+
+def turn_left():
+    global d
+    d -= 1
+    if d == -1:
+        d = 3
+
+cnt = 1
+turn_time = 0
+visited[x][y] = True
+
+while True:
+    turn_left()
+    nx, ny = x + dx[d], y + dy[d]
+    
+    if not visited[nx][ny] and grid[nx][ny] == 0:
+        turn_time = 0
+        x, y = nx, ny
+        visited[x][y]
+        cnt += 1
+        continue
+    else:
+        turn_time += 1
+    
+    if turn_time == 4:
+        nx, ny = x - dx[d], y - dy[d]
+        if grid[nx][ny] == 0:
+            x, y = nx, ny
+        else:
+            break
+        turn_time = 0
+
+print(cnt)
+
